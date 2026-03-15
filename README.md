@@ -4,7 +4,7 @@ based on various data sources.
 
 The goal is to predict the probability of several types of military activity using open-source intelligence and contextual data.
 
-The system integrates information from multiple sources including:
+**The system integrates information from multiple sources including:**
 
 reports from the Institute for the Study of War (ISW)
 
@@ -16,7 +16,7 @@ regional activity patterns
 
 Using this data, machine learning models estimate the likelihood of upcoming security events in different oblasts.
 
-Predicted Event Types
+**Predicted Event Types:**
 
 The system forecasts the probability of the following events:
 
