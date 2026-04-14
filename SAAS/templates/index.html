@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Alarm Prediction</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        .header-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        #region-select {
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            padding: 10px 14px;
+            border-radius: 10px;
+            color: #1e293b;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        #refresh-button {
+            background: #3b82f6;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        #refresh-button:hover {
+            background: #2563eb;
+            transform: scale(1.05);
+        }
+
+        #refresh-button:disabled {
+            background: #94a3b8;
+            cursor: wait;
+            transform: none;
+        }
+
+        /* Мета-інформація */
+        #meta-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 12px 16px;
+            background: #f1f5f9;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+        }
+
+        #meta-info span {
+            display: flex;
+            gap: 4px;
+        }
+
+        #meta-info strong {
+            color: #0f172a;
+        }
+
+        .loader-container {
+            text-align: center;
+            padding: 40px;
+            color: #475569;
+        }
+
+        .loader {
+            border: 4px solid #e2e8f0;
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error {
+            text-align: center;
+            color: #ef4444;
+            padding: 20px;
+            font-weight: 600;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <header>
+            <h1>🚨 Air Alarm Prediction</h1>
+            <div class="header-controls">
+                <select id="region-select">
+                    <option value="all">Всі регіони</option>
+                    <option value="Kyiv">Kyiv</option>
+                    <option value="Kharkiv">Kharkiv</option>
+                    <option value="Lviv">Lviv</option>
+                    <option value="Odesa">Odesa</option>
+                    <option value="Donetsk">Donetsk</option>
+                    <option value="Luhansk">Luhansk</option>
+                    <option value="Kherson">Kherson</option>
+                    <option value="Crimea">Crimea</option>
+                    <option value="Mykolaiv">Mykolaiv</option>
+                    <option value="Chernihiv">Chernihiv</option>
+                    <option value="Dnipro">Dnipro</option>
+                    <option value="Vinnytsia">Vinnytsia</option>
+                    <option value="Zhytomyr">Zhytomyr</option>
+                    <option value="Kropyvnytskyi">Kropyvnytskyi</option>
+                    <option value="Poltava">Poltava</option>
+                    <option value="Sumy">Sumy</option>
+                    <option value="Rivne">Rivne</option>
+                    <option value="Khmelnytskyi">Khmelnytskyi</option>
+                    <option value="Cherkasy">Cherkasy</option>
+                    <option value="Zakarpattia">Zakarpattia</option>
+                    <option value="Zaporizhzhia">Zaporizhzhia</option>
+                    <option value="Ivano-Frankivsk">Ivano-Frankivsk</option>
+                </select>
+                <button id="refresh-button">🔄 Refresh</button>
+            </div>
+        </header>
+
+        <!-- Метадані: час тренування моделі, час прогнозу -->
+        <div id="meta-info"></div>
+
+        <div id="prediction-data">
+            <div class="loader-container">
+                <div class="loader"></div>
+                <p>Завантаження прогнозу...</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 Air Alarm Prediction | Data Science Project</p>
+        </footer>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
