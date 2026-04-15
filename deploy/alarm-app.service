@@ -1,0 +1,15 @@
+[Unit]
+Description=Air Alarm Prediction Flask App (Gunicorn)
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/alarm-app
+Environment="PATH=/home/ubuntu/alarm-app/venv/bin"
+ExecStart=/home/ubuntu/alarm-app/venv/bin/gunicorn --workers 2 --bind 127.0.0.1:5000 app:app
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
