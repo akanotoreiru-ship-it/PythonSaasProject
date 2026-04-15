@@ -17,4 +17,10 @@ string
 copy
 pickle
 telethon
+catboost
+tensorflow
+nbformat
+nbconvert
+lxml
+xgboost
 
