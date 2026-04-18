@@ -67,7 +67,7 @@ CRON_JOB="0 * * * * cd $APP_DIR && $VENV_DIR/bin/python predict.py >> $APP_DIR/d
 
 echo ""
 echo "========================================="
-echo "  ✅ DEPLOYMENT COMPLETE!"
+echo "  DEPLOYMENT COMPLETE!"
 echo "========================================="
 echo ""
 echo "  Gunicorn:  sudo systemctl status $SERVICE_NAME"
